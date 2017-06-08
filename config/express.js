@@ -6,6 +6,7 @@ const compress = require('compression');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
 const session = require('express-session');
+const path=require('path');
 const flash = require('connect-flash');
 const passport = require('passport');
 
@@ -51,7 +52,7 @@ module.exports = function() {
 	require('../server/routes/users.server.routes.js')(app);
 
 	// Configure static file serving
-	app.use(express.static('./client'));
+	app.use(express.static(path.join(__dirname,'client')));
 
 	// Return the Express application instance
 	return app;
